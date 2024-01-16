@@ -42,7 +42,7 @@ const puppeteerScraper = () => __awaiter(void 0, void 0, void 0, function* () {
     yield page.select('#ctl00_cph_ddlDepDropLocation', '8,19');
     // Closes popup message if there is one
     try {
-        yield page.waitForSelector('#msgClose.btn', { timeout: 2000, visible: true });
+        yield page.waitForSelector('#msgClose.btn', { timeout: 1000, visible: true });
         yield page.click('#msgClose.btn');
     }
     catch (e) {

@@ -16,7 +16,10 @@ app.get("/", async (req, res) => {
 
 app.get("/scrape", async (req, res) => {
     try {
+        var startTime = performance.now();
         const c2cData = await puppeteerScraper();
+        var endTime = performance.now();
+        console.log("Time elapsed: " + (endTime - startTime) + "ms");
 
         res.status(200).send({
             message: "success",

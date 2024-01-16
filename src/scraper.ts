@@ -36,7 +36,7 @@ export const puppeteerScraper = async () => {
 
     // Closes popup message if there is one
     try {
-        await page.waitForSelector('#msgClose.btn', { timeout: 2000, visible: true });
+        await page.waitForSelector('#msgClose.btn', { timeout: 1000, visible: true });
 
         await page.click('#msgClose.btn');
     } catch (e) {

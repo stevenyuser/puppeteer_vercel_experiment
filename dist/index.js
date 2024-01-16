@@ -25,7 +25,10 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 }));
 app.get("/scrape", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        var startTime = performance.now();
         const c2cData = yield (0, scraper_1.puppeteerScraper)();
+        var endTime = performance.now();
+        console.log("Time elapsed: " + (endTime - startTime) + "ms");
         res.status(200).send({
             message: "success",
             data: c2cData,
