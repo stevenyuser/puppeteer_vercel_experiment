@@ -57,9 +57,6 @@ const puppeteerScraper = () => __awaiter(void 0, void 0, void 0, function* () {
     // // Selects set button
     yield page.click("xpath//html/body/form/div[5]/div[3]/div[4]/div[2]/div[2]/table/tr[5]/td[3]");
     // Prints out the possible tickets for the date
-    const date = new Date();
-    date.setDate(date.getDate() + 1);
-    console.log(date.toDateString() + ":");
     yield page.waitForSelector('label.radio');
     const elements = yield page.$$('label.radio');
     const tripData = [];

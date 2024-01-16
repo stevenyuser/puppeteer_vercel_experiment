@@ -55,9 +55,6 @@ export const puppeteerScraper = async () => {
     await page.click("xpath//html/body/form/div[5]/div[3]/div[4]/div[2]/div[2]/table/tr[5]/td[3]");
 
     // Prints out the possible tickets for the date
-    const date = new Date();
-    date.setDate(date.getDate() + 1);
-    console.log(date.toDateString() + ":");
 
     await page.waitForSelector('label.radio');
     const elements = await page.$$('label.radio');
