@@ -3,22 +3,20 @@ import chromium from '@sparticuz/chromium-min'
 
 // code from: https://github.com/stefanjudis/tiny-helpers/blob/primary/api/screenshot.js
 async function getBrowser() {
-    // local development is broken for this 👇
-    // but it works in vercel so I'm not gonna touch it
     return puppeteer.launch({
-      args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(
-        `https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar`
-      ),
-      headless: chromium.headless,
-      ignoreHTTPSErrors: true,
+        args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(
+            `https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar`
+        ),
+        headless: chromium.headless,
+        ignoreHTTPSErrors: true,
     });
 }
 
 export const puppeteerScraper = async () => {
     const browser = await getBrowser();
-    
+
     const page = await browser.newPage();
 
     await page.goto('https://c2cbus.ipp.cornell.edu/mobile/?a=mobile');
@@ -38,7 +36,7 @@ export const puppeteerScraper = async () => {
 
     // Closes popup message if there is one
     try {
-        await page.waitForSelector('#msgClose.btn', {timeout: 2000, visible: true});
+        await page.waitForSelector('#msgClose.btn', { timeout: 2000, visible: true });
 
         await page.click('#msgClose.btn');
     } catch (e) {
