@@ -4,7 +4,7 @@ import chromium from '@sparticuz/chromium-min'
 // code from: https://github.com/stefanjudis/tiny-helpers/blob/primary/api/screenshot.js
 async function getBrowser() {
     return puppeteer.launch({
-        args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
+        args: [...chromium.args, '--hide-scrollbars', '--disable-web-security', "--disable-extensions"],
         defaultViewport: chromium.defaultViewport,
         executablePath: await chromium.executablePath(
             `https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar`

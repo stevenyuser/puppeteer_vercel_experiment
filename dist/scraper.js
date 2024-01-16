@@ -19,7 +19,7 @@ const chromium_min_1 = __importDefault(require("@sparticuz/chromium-min"));
 function getBrowser() {
     return __awaiter(this, void 0, void 0, function* () {
         return puppeteer_core_1.default.launch({
-            args: [...chromium_min_1.default.args, '--hide-scrollbars', '--disable-web-security'],
+            args: [...chromium_min_1.default.args, '--hide-scrollbars', '--disable-web-security', "--disable-extensions"],
             defaultViewport: chromium_min_1.default.defaultViewport,
             executablePath: yield chromium_min_1.default.executablePath(`https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar`),
             headless: chromium_min_1.default.headless,
