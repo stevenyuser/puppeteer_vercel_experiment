@@ -21,7 +21,7 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.options('*', (0, cors_1.default)());
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.status(200).json({ message: "Hello world!!!" });
+    res.status(200).json({ message: "Hello world!!" });
 }));
 app.get("/scrape", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

@@ -18,8 +18,6 @@ const chromium_min_1 = __importDefault(require("@sparticuz/chromium-min"));
 // code from: https://github.com/stefanjudis/tiny-helpers/blob/primary/api/screenshot.js
 function getBrowser() {
     return __awaiter(this, void 0, void 0, function* () {
-        // local development is broken for this 👇
-        // but it works in vercel so I'm not gonna touch it
         return puppeteer_core_1.default.launch({
             args: [...chromium_min_1.default.args, '--hide-scrollbars', '--disable-web-security'],
             defaultViewport: chromium_min_1.default.defaultViewport,

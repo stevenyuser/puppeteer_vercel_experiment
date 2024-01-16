@@ -11,7 +11,7 @@ app.use(cors())
 app.options('*', cors());
 
 app.get("/", async (req, res) => {
-    res.status(200).json({ message: "Hello world!" })
+    res.status(200).json({ message: "Hello world!!" })
 })
 
 app.get("/scrape", async (req, res) => {
