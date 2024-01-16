@@ -1,14 +1,20 @@
-import express, { Request, Response } from 'express'
+import express, { Express } from "express"
+import cors from "cors"
+
 import { puppeteerScraper } from './scraper'
 
-const app = express()
-const port = process.env.PORT || 8080
+const app: Express = express()
+const port = 8080
 
-app.get('/', (_req: Request, res: Response) => {
-    return res.send('Hello world!')
+app.use(express.json())
+app.use(cors())
+app.options('*', cors());
+
+app.get("/", async (req, res) => {
+    res.status(200).json({ message: "Hello world!" })
 })
 
-app.get('/scrape', async (_req: Request, res: Response) => {
+app.get("/scrape", async (req, res) => {
     try {
         const c2cData = await puppeteerScraper();
 
@@ -23,10 +29,11 @@ app.get('/scrape', async (_req: Request, res: Response) => {
     }
 })
 
-app.get('/ping', (_req: Request, res: Response) => {
+app.get("/ping", async (req, res) => {
     return res.send('pong 🏓')
 })
 
+// listening on port
 app.listen(port, () => {
-    return console.log(`Server is listening on ${port}`)
+    console.log(`Listening on port: ${port}`)
 })
