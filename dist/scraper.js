@@ -52,7 +52,7 @@ const puppeteerScraper = () => __awaiter(void 0, void 0, void 0, function* () {
     yield page.click('#ctl00_cph_txtDepDate');
     // Selects date (tomorrow for testing)
     // Increases day by one
-    yield page.waitForXPath('/html/body/form/div[5]/div[3]/div[4]/div[2]/div[2]/table/tr[4]/td[2]');
+    yield page.waitForXPath('/html/body/form/div[5]/div[3]/div[4]/div[2]/div[2]/table/tr[4]/td[2]', { timeout: 1000 });
     yield page.click('xpath//html/body/form/div[5]/div[3]/div[4]/div[2]/div[2]/table/tr[4]/td[2]');
     // // Selects set button
     yield page.click("xpath//html/body/form/div[5]/div[3]/div[4]/div[2]/div[2]/table/tr[5]/td[3]");
@@ -67,7 +67,6 @@ const puppeteerScraper = () => __awaiter(void 0, void 0, void 0, function* () {
         const text = yield element.$eval('span', el => el.textContent);
         tripData.push(text);
     }
-    console.log(tripData);
     yield browser.close();
     return tripData;
 });

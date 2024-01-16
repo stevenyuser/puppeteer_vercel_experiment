@@ -48,7 +48,7 @@ export const puppeteerScraper = async () => {
 
     // Selects date (tomorrow for testing)
     // Increases day by one
-    await page.waitForXPath('/html/body/form/div[5]/div[3]/div[4]/div[2]/div[2]/table/tr[4]/td[2]');
+    await page.waitForXPath('/html/body/form/div[5]/div[3]/div[4]/div[2]/div[2]/table/tr[4]/td[2]', { timeout: 1000 });
     await page.click('xpath//html/body/form/div[5]/div[3]/div[4]/div[2]/div[2]/table/tr[4]/td[2]');
 
     // // Selects set button
@@ -68,8 +68,6 @@ export const puppeteerScraper = async () => {
         const text = await element.$eval('span', el => el.textContent);
         tripData.push(text);
     }
-
-    console.log(tripData);
 
     await browser.close();
 
