@@ -9,12 +9,18 @@ app.get('/', (_req: Request, res: Response) => {
 })
 
 app.get('/scrape', async (_req: Request, res: Response) => {
-    const c2cData = await puppeteerScraper();
+    try {
+        const c2cData = await puppeteerScraper();
 
-    res.status(200).send({
-        message: "success",
-        data: c2cData,
-    });
+        res.status(200).send({
+            message: "success",
+            data: c2cData,
+        });
+    } catch (err) {
+        res.status(500).json({
+            error: `ERROR: an error occurred in the /scrapes endpoint: ${err}`,
+        });
+    }
 })
 
 app.get('/ping', (_req: Request, res: Response) => {
